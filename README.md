@@ -11,12 +11,13 @@ false-positive rate next to every detection rate.
 | agent-egress-bench | external | 193 | **100%** | 10.6% | 0.98 |
 | InjecAgent | external | 240 | **100%** | 0.0% | 1.00 |
 | AgentDojo | external | 28 | **100%** | 0.0% | 1.00 |
+| ASB (Agent Security Bench) | external | 140 | **69%** | 0.0% | 0.82 |
 | CyberSecEval (prompt injection) | external | 251 | **86%** | 0.8% | 0.92 |
 | Memory integrity & drift | Kaizen corpus | 20 | **100%** | 0.0% | 1.00 |
-| **Overall** | 5 benchmarks | 912 | **94.6%** | **1.6%** | n/a |
+| **Overall** | 5 benchmarks | 1052 | **89.5%** | **1.6%** | n/a |
 
-Across 912 cases, Kaizen detects
-**94.6%** of attacks at a **1.6%**
+Across 1052 cases, Kaizen detects
+**89.5%** of attacks at a **1.6%**
 false-positive rate.
 
 ## Reproduce
@@ -66,6 +67,15 @@ ETH Zürich prompt-injection attacks across banking/workspace/travel/slack
 - **False-positive (FPR):** 0.0%  
 - **Precision / F1:** 100% / 1.00  
 - **OWASP LLM Top 10:** LLM01 Prompt Injection, LLM06 Excessive Agency
+
+### ASB (Agent Security Bench)
+
+injected malicious attack-tools a compromised agent may call (resource hijack, stealthy exfiltration)
+
+- **Detection (TPR):** 69%  
+- **False-positive (FPR):** 0.0%  
+- **Precision / F1:** 100% / 0.82  
+- **OWASP LLM Top 10:** LLM06 Excessive Agency, LLM07 System Prompt Leakage
 
 ### CyberSecEval (prompt injection)
 

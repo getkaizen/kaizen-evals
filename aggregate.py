@@ -6,11 +6,12 @@ import os, json, glob
 HERE = os.path.dirname(__file__)
 RESULTS = os.path.join(HERE, "results")
 
-ORDER = ["egress_bench", "injecagent", "agentdojo", "cyberseceval", "memory_integrity"]
+ORDER = ["egress_bench", "injecagent", "agentdojo", "asb", "cyberseceval", "memory_integrity"]
 META = {
     "egress_bench": {"name": "agent-egress-bench", "kind": "external", "what": "197-case egress-security corpus that tests the security tool, not the model", "owasp": ["LLM02 Sensitive Information Disclosure", "LLM01 Prompt Injection"]},
     "injecagent": {"name": "InjecAgent", "kind": "external", "what": "1,054-case indirect prompt-injection benchmark (tool-integrated agents)", "owasp": ["LLM01 Prompt Injection", "LLM06 Excessive Agency"]},
     "agentdojo": {"name": "AgentDojo", "kind": "external", "what": "ETH Zürich prompt-injection attacks across banking/workspace/travel/slack", "owasp": ["LLM01 Prompt Injection", "LLM06 Excessive Agency"]},
+    "asb": {"name": "ASB (Agent Security Bench)", "kind": "external", "what": "injected malicious attack-tools a compromised agent may call (resource hijack, stealthy exfiltration)", "owasp": ["LLM06 Excessive Agency", "LLM07 System Prompt Leakage"]},
     "cyberseceval": {"name": "CyberSecEval (prompt injection)", "kind": "external", "what": "Meta PurpleLlama input-side prompt-injection set (complementary screen)", "owasp": ["LLM01 Prompt Injection"]},
     "memory_integrity": {"name": "Memory integrity & drift", "kind": "kaizen-corpus", "what": "Kaizen adversarial corpus: memory poisoning + baseline deviation (ASB-aligned)", "owasp": ["LLM08 Vector and Embedding Weaknesses", "LLM06 Excessive Agency"]},
 }

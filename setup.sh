@@ -14,5 +14,6 @@ clone() {  # repo, dir, commit
 clone https://github.com/luckyPipewrench/agent-egress-bench agent-egress-bench HEAD
 clone https://github.com/uiuc-kang-lab/InjecAgent InjecAgent HEAD
 clone https://github.com/ethz-spylab/agentdojo agentdojo HEAD
+clone https://github.com/agiresearch/ASB ASB HEAD
 
 echo "benchmarks ready in ./benchmarks"
