@@ -29,6 +29,7 @@ def detect(declaration: str, egress: str, agent: str = "evaluated-agent", trace:
         "declaration": declaration,
         "trace": trace,
         "egress": egress,
+        "feed": os.environ.get("KZ_EVAL_FEED", "egress"),  # "content" for input-injection benchmarks
         "mode": "score",
     }).encode()
     req = urllib.request.Request(KAIZEN_API_URL + "/v1/score", data=payload,

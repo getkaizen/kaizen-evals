@@ -9,7 +9,7 @@ import os, sys, json, glob, concurrent.futures as cf
 sys.path.insert(0, os.path.dirname(__file__))
 import detector_core
 
-CASES_DIR = os.environ.get("AEB_CASES", "/Users/kk/Documents/security-benchmarks/agent-egress-bench/cases")
+CASES_DIR = os.environ.get("AEB_CASES", os.path.join(os.environ.get("BENCH_DIR", "./benchmarks"), "agent-egress-bench", "cases"))
 LIMIT = int(os.environ.get("LIMIT", "0"))
 WORKERS = int(os.environ.get("WORKERS", "8"))
 

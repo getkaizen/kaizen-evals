@@ -11,7 +11,7 @@ import os, sys, json, re, glob, concurrent.futures as cf
 sys.path.insert(0, os.path.dirname(__file__))
 import detector_core
 
-AD = os.environ.get("AGENTDOJO", "/Users/kk/Documents/security-benchmarks/agentdojo/src/agentdojo/default_suites/v1")
+AD = os.environ.get("AGENTDOJO", os.path.join(os.environ.get("BENCH_DIR", "./benchmarks"), "agentdojo", "src", "agentdojo", "default_suites", "v1"))
 
 SUITES = {
     "banking": {

@@ -12,7 +12,7 @@ import os, sys, json, glob, random, concurrent.futures as cf
 sys.path.insert(0, os.path.dirname(__file__))
 import detector_core
 
-DATA = os.environ.get("INJEC_DATA", "/Users/kk/Documents/security-benchmarks/InjecAgent/data")
+DATA = os.environ.get("INJEC_DATA", os.path.join(os.environ.get("BENCH_DIR", "./benchmarks"), "InjecAgent", "data"))
 SAMPLE = int(os.environ.get("SAMPLE", "120"))
 WORKERS = int(os.environ.get("WORKERS", "10"))
 

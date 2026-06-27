@@ -21,13 +21,22 @@ false-positive rate.
 
 ## Reproduce
 
+Detection runs in your own Kaizen tenant via the `/v1/score` endpoint (the skills run
+server-side with your bring-your-own model), so you reproduce against the product without a
+copy of the detector.
+
 ```bash
-pip install boto3            # or set OPENAI_API_KEY for the OpenAI backend
-export AWS_PROFILE=...        # Claude on Bedrock, or KZ_MODEL_BACKEND=openai
-python run_egress_bench.py    # and run_injecagent / run_agentdojo / run_cyberseceval / run_memory_integrity
-python aggregate.py           # regenerates results/results.json (the single source of truth)
-python publish.py             # regenerates this README, the docs page, and the report
+./setup.sh                                  # clone the upstream benchmarks into ./benchmarks
+export KAIZEN_API_KEY=kz_live_...           # free signup at app.getkaizen.io; set your model in Settings
+python run_egress_bench.py
+python run_injecagent.py
+python run_agentdojo.py
+KZ_EVAL_FEED=content python run_cyberseceval.py
+python run_memory_integrity.py
+python aggregate.py                         # regenerates results/results.json
 ```
+
+Your numbers match these when you use the same model; results scale with model strength.
 
 ## What's measured
 
