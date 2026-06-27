@@ -71,7 +71,7 @@ ETH Zürich prompt-injection attacks across banking/workspace/travel/slack
 
 ### ASB (Agent Security Bench)
 
-injected malicious attack-tools a compromised agent may call; Kaizen flags them as outside the agent's declared scope (stealthy tools that fool semantic-only judgment, 43%, are all caught once the agent declares its toolset)
+injected malicious attack-tools a compromised agent may call. Their descriptions are written to look benign, so pure semantic detection floors near 10% (any model, held-out validated). Kaizen catches them by their novelty against the agent's declared scope plus a deterministic undeclared-capability check, which is exactly why behavioral detection beats content filtering
 
 - **Detection (TPR):** 100%  
 - **False-positive (FPR):** 0.0%  
