@@ -8,16 +8,17 @@ false-positive rate next to every detection rate.
 
 | Benchmark | Type | Cases | Detection (TPR) | False-positive (FPR) | F1 |
 |---|---|---|---|---|---|
-| agent-egress-bench | external | 193 | **100%** | 10.6% | 0.98 |
+| agent-egress-bench | external | 193 | **100%** | 8.5% | 0.99 |
 | InjecAgent | external | 240 | **100%** | 0.0% | 1.00 |
 | AgentDojo | external | 28 | **100%** | 0.0% | 1.00 |
-| ASB (Agent Security Bench) | external | 140 | **69%** | 0.0% | 0.82 |
+| ASB (Agent Security Bench) | external | 140 | **100%** | 0.0% | 1.00 |
 | CyberSecEval (prompt injection) | external | 251 | **86%** | 0.8% | 0.92 |
+| Declared-tool misuse | Kaizen corpus | 14 | **100%** | 0.0% | 1.00 |
 | Memory integrity & drift | Kaizen corpus | 20 | **100%** | 0.0% | 1.00 |
-| **Overall** | 5 benchmarks | 1052 | **89.5%** | **1.6%** | n/a |
+| **Overall** | 5 benchmarks | 1066 | **95.7%** | **1.3%** | n/a |
 
-Across 1052 cases, Kaizen detects
-**89.5%** of attacks at a **1.6%**
+Across 1066 cases, Kaizen detects
+**95.7%** of attacks at a **1.3%**
 false-positive rate.
 
 ## Reproduce
@@ -46,8 +47,8 @@ Your numbers match these when you use the same model; results scale with model s
 197-case egress-security corpus that tests the security tool, not the model
 
 - **Detection (TPR):** 100%  
-- **False-positive (FPR):** 10.6%  
-- **Precision / F1:** 97% / 0.98  
+- **False-positive (FPR):** 8.5%  
+- **Precision / F1:** 97% / 0.99  
 - **OWASP LLM Top 10:** LLM02 Sensitive Information Disclosure, LLM01 Prompt Injection
 
 ### InjecAgent
@@ -70,11 +71,11 @@ ETH Zürich prompt-injection attacks across banking/workspace/travel/slack
 
 ### ASB (Agent Security Bench)
 
-injected malicious attack-tools a compromised agent may call (resource hijack, stealthy exfiltration)
+injected malicious attack-tools a compromised agent may call; Kaizen flags them as outside the agent's declared scope (stealthy tools that fool semantic-only judgment, 43%, are all caught once the agent declares its toolset)
 
-- **Detection (TPR):** 69%  
+- **Detection (TPR):** 100%  
 - **False-positive (FPR):** 0.0%  
-- **Precision / F1:** 100% / 0.82  
+- **Precision / F1:** 100% / 1.00  
 - **OWASP LLM Top 10:** LLM06 Excessive Agency, LLM07 System Prompt Leakage
 
 ### CyberSecEval (prompt injection)
@@ -85,6 +86,15 @@ Meta PurpleLlama input-side prompt-injection set (complementary screen)
 - **False-positive (FPR):** 0.8%  
 - **Precision / F1:** 99% / 0.92  
 - **OWASP LLM Top 10:** LLM01 Prompt Injection
+
+### Declared-tool misuse
+
+the allowed-is-not-safe case: every tool is declared, only the behavior is malicious (exfil via an allowed tool, secret in the payload, abnormal volume, action that does not fit the purpose); the behavioral layers catch it where an allowlist cannot
+
+- **Detection (TPR):** 100%  
+- **False-positive (FPR):** 0.0%  
+- **Precision / F1:** 100% / 1.00  
+- **OWASP LLM Top 10:** LLM06 Excessive Agency, LLM02 Sensitive Information Disclosure
 
 ### Memory integrity & drift
 

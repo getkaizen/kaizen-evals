@@ -6,13 +6,14 @@ import os, json, glob
 HERE = os.path.dirname(__file__)
 RESULTS = os.path.join(HERE, "results")
 
-ORDER = ["egress_bench", "injecagent", "agentdojo", "asb", "cyberseceval", "memory_integrity"]
+ORDER = ["egress_bench", "injecagent", "agentdojo", "asb", "cyberseceval", "declared_misuse", "memory_integrity"]
 META = {
     "egress_bench": {"name": "agent-egress-bench", "kind": "external", "what": "197-case egress-security corpus that tests the security tool, not the model", "owasp": ["LLM02 Sensitive Information Disclosure", "LLM01 Prompt Injection"]},
     "injecagent": {"name": "InjecAgent", "kind": "external", "what": "1,054-case indirect prompt-injection benchmark (tool-integrated agents)", "owasp": ["LLM01 Prompt Injection", "LLM06 Excessive Agency"]},
     "agentdojo": {"name": "AgentDojo", "kind": "external", "what": "ETH Zürich prompt-injection attacks across banking/workspace/travel/slack", "owasp": ["LLM01 Prompt Injection", "LLM06 Excessive Agency"]},
     "asb": {"name": "ASB (Agent Security Bench)", "kind": "external", "what": "injected malicious attack-tools a compromised agent may call; Kaizen flags them as outside the agent's declared scope (stealthy tools that fool semantic-only judgment, 43%, are all caught once the agent declares its toolset)", "owasp": ["LLM06 Excessive Agency", "LLM07 System Prompt Leakage"]},
     "cyberseceval": {"name": "CyberSecEval (prompt injection)", "kind": "external", "what": "Meta PurpleLlama input-side prompt-injection set (complementary screen)", "owasp": ["LLM01 Prompt Injection"]},
+    "declared_misuse": {"name": "Declared-tool misuse", "kind": "kaizen-corpus", "what": "the allowed-is-not-safe case: every tool is declared, only the behavior is malicious (exfil via an allowed tool, secret in the payload, abnormal volume, action that does not fit the purpose); the behavioral layers catch it where an allowlist cannot", "owasp": ["LLM06 Excessive Agency", "LLM02 Sensitive Information Disclosure"]},
     "memory_integrity": {"name": "Memory integrity & drift", "kind": "kaizen-corpus", "what": "Kaizen adversarial corpus: memory poisoning + baseline deviation (ASB-aligned)", "owasp": ["LLM08 Vector and Embedding Weaknesses", "LLM06 Excessive Agency"]},
 }
 

@@ -112,6 +112,28 @@
       "n": 251
     },
     {
+      "key": "declared_misuse",
+      "name": "Declared-tool misuse",
+      "kind": "kaizen-corpus",
+      "what": "the allowed-is-not-safe case: every tool is declared, only the behavior is malicious (exfil via an allowed tool, secret in the payload, abnormal volume, action that does not fit the purpose); the behavioral layers catch it where an allowlist cannot",
+      "owasp": [
+        "LLM06 Excessive Agency",
+        "LLM02 Sensitive Information Disclosure"
+      ],
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "detection_tpr": 1.0,
+      "false_positive_fpr": 0.0,
+      "precision": 1.0,
+      "f1": 1.0,
+      "confusion": {
+        "TP": 8,
+        "FN": 0,
+        "TN": 6,
+        "FP": 0
+      },
+      "n": 14
+    },
+    {
       "key": "memory_integrity",
       "name": "Memory integrity & drift",
       "kind": "kaizen-corpus",
@@ -135,15 +157,15 @@
     }
   ],
   "aggregate": {
-    "n_benchmarks": 6,
-    "total_attack_cases": 600,
-    "total_benign_cases": 452,
-    "overall_detection_tpr": 0.9567,
-    "overall_false_positive_fpr": 0.0133,
+    "n_benchmarks": 7,
+    "total_attack_cases": 608,
+    "total_benign_cases": 458,
+    "overall_detection_tpr": 0.9572,
+    "overall_false_positive_fpr": 0.0131,
     "confusion": {
-      "TP": 574,
+      "TP": 582,
       "FN": 26,
-      "TN": 446,
+      "TN": 452,
       "FP": 6
     }
   },
