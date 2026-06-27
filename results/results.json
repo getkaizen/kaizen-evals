@@ -1,0 +1,129 @@
+{
+  "generated_by": "kaizen-security/evals/aggregate.py",
+  "model": "Claude Sonnet 4.6 on Amazon Bedrock (Kaizen runs on your own model)",
+  "benchmarks": [
+    {
+      "key": "egress_bench",
+      "name": "agent-egress-bench",
+      "kind": "external",
+      "what": "197-case egress-security corpus that tests the security tool, not the model",
+      "owasp": [
+        "LLM02 Sensitive Information Disclosure",
+        "LLM01 Prompt Injection"
+      ],
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "detection_tpr": 1.0,
+      "false_positive_fpr": 0.1064,
+      "precision": 0.9669,
+      "f1": 0.9832,
+      "confusion": {
+        "TP": 146,
+        "FN": 0,
+        "TN": 42,
+        "FP": 5
+      },
+      "n": 193
+    },
+    {
+      "key": "injecagent",
+      "name": "InjecAgent",
+      "kind": "external",
+      "what": "1,054-case indirect prompt-injection benchmark (tool-integrated agents)",
+      "owasp": [
+        "LLM01 Prompt Injection",
+        "LLM06 Excessive Agency"
+      ],
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "detection_tpr": 1.0,
+      "false_positive_fpr": 0.0,
+      "precision": 1.0,
+      "f1": 1.0,
+      "confusion": {
+        "TP": 120,
+        "FN": 0,
+        "TN": 120,
+        "FP": 0
+      },
+      "n": 240
+    },
+    {
+      "key": "agentdojo",
+      "name": "AgentDojo",
+      "kind": "external",
+      "what": "ETH Z\u00fcrich prompt-injection attacks across banking/workspace/travel/slack",
+      "owasp": [
+        "LLM01 Prompt Injection",
+        "LLM06 Excessive Agency"
+      ],
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "detection_tpr": 1.0,
+      "false_positive_fpr": 0.0,
+      "precision": 1.0,
+      "f1": 1.0,
+      "confusion": {
+        "TP": 24,
+        "FN": 0,
+        "TN": 4,
+        "FP": 0
+      },
+      "n": 28
+    },
+    {
+      "key": "cyberseceval",
+      "name": "CyberSecEval (prompt injection)",
+      "kind": "external",
+      "what": "Meta PurpleLlama input-side prompt-injection set (complementary screen)",
+      "owasp": [
+        "LLM01 Prompt Injection"
+      ],
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "detection_tpr": 0.8556,
+      "false_positive_fpr": 0.008,
+      "precision": 0.9906,
+      "f1": 0.9181,
+      "confusion": {
+        "TP": 154,
+        "FN": 26,
+        "TN": 249,
+        "FP": 2
+      },
+      "n": 251
+    },
+    {
+      "key": "memory_integrity",
+      "name": "Memory integrity & drift",
+      "kind": "kaizen-corpus",
+      "what": "Kaizen adversarial corpus: memory poisoning + baseline deviation (ASB-aligned)",
+      "owasp": [
+        "LLM08 Vector and Embedding Weaknesses",
+        "LLM06 Excessive Agency"
+      ],
+      "model": "us.anthropic.claude-sonnet-4-6",
+      "detection_tpr": 1.0,
+      "false_positive_fpr": 0.0,
+      "precision": 1.0,
+      "f1": 1.0,
+      "confusion": {
+        "TP": 10,
+        "FN": 0,
+        "TN": 10,
+        "FP": 0
+      },
+      "n": 20
+    }
+  ],
+  "aggregate": {
+    "n_benchmarks": 5,
+    "total_attack_cases": 480,
+    "total_benign_cases": 432,
+    "overall_detection_tpr": 0.9458,
+    "overall_false_positive_fpr": 0.0162,
+    "confusion": {
+      "TP": 454,
+      "FN": 26,
+      "TN": 425,
+      "FP": 7
+    }
+  },
+  "methodology": "Each benchmark scenario is converted into Kaizen's action/egress format and judged by the real in-sandbox detector logic with the shipping detection skills, no per-case tuning. Attack cases measure detection (TPR); benign cases measure false positives (FPR). External academic benchmarks and one Kaizen adversarial corpus are labeled distinctly. Numbers regenerate from this harness."
+}
