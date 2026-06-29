@@ -15,7 +15,7 @@ false-positive rate next to every detection rate.
 | CyberSecEval (prompt injection) | external | 251 | **86%** | 0.8% | 0.92 |
 | Declared-tool misuse | Kaizen corpus | 14 | **100%** | 0.0% | 1.00 |
 | Memory integrity & drift | Kaizen corpus | 20 | **100%** | 0.0% | 1.00 |
-| **Overall** | 5 benchmarks | 1066 | **95.7%** | **1.3%** | n/a |
+| **Overall** | 7 benchmarks | 1066 | **95.7%** | **1.3%** | n/a |
 
 Across 1066 cases, Kaizen detects
 **95.7%** of attacks at a **1.3%**
