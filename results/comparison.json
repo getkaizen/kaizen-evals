@@ -1,0 +1,56 @@
+{
+  "declared-misuse": {
+    "none": {
+      "tpr": 0.0,
+      "fpr": 0.0
+    },
+    "sandbox": {
+      "tpr": 0.5,
+      "fpr": 0.0
+    },
+    "guardrail": {
+      "tpr": 0.875,
+      "fpr": 0.167
+    },
+    "kaizen": {
+      "tpr": 1.0,
+      "fpr": 0.0
+    }
+  },
+  "egress-bench": {
+    "none": {
+      "tpr": 0.0,
+      "fpr": 0.0
+    },
+    "sandbox": {
+      "tpr": 0.611,
+      "fpr": 0.667
+    },
+    "guardrail": {
+      "tpr": 0.778,
+      "fpr": 0.0
+    },
+    "kaizen": {
+      "tpr": 1.0,
+      "fpr": 0.083
+    }
+  },
+  "ALL": {
+    "none": {
+      "tpr": 0.0,
+      "fpr": 0.0
+    },
+    "sandbox": {
+      "tpr": 0.577,
+      "fpr": 0.444
+    },
+    "guardrail": {
+      "tpr": 0.808,
+      "fpr": 0.056
+    },
+    "kaizen": {
+      "tpr": 1.0,
+      "fpr": 0.056
+    }
+  }
+}

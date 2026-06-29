@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 results/*.json
 !results/results.json
+!results/comparison.json
